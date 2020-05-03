@@ -18,22 +18,20 @@ class EasyHTTP {
   }
 
   // // HTTP Post Request
-  // post( url, data ){
-  //   return new Promise((resolve, reject) => {
-  //     fetch(url, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-type': 'application/json'
-  //       },
+  async post( url, data ){
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
 
-  //       body: JSON.stringify(data)
-  //     })
+        body: JSON.stringify(data)
+      });
 
-  //     .then(res => res.json())
-  //     .then(data => resolve(data))
-  //     .catch(err => reject(err));
-  //   });
-  // }
+      const resData = await response.json();
+      return resData;
+
+  }
 
   // HTTP Put Request
   // put( url, data ){
